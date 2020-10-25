@@ -10,7 +10,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            var size = 200;
+            var size = 100;
             var ranges = 10;
 
             var middleSquareMethodArray = new MiddleSquareMethod().GenerateArray(seed: 3559, size: size);
