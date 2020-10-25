@@ -2,6 +2,7 @@
 using Lab1.Services;
 using Lab1.Services.EqualityFormula;
 using Lab1.Services.Generators;
+using Lab1.Services.IndependenceFormula;
 
 namespace Lab1
 {
@@ -9,19 +10,28 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            var size = 1000;
+            var size = 200;
             var ranges = 10;
 
-            var firstMethodArray = new MiddleSquareMethod().GenerateArray(seed: 3559, size: size);
+            var middleSquareMethodArray = new MiddleSquareMethod().GenerateArray(seed: 3559, size: size);
 
-            var secondMethodArray = new MultiplyingCongruentMethod(amountM: (int) Math.Pow(2, 14), amountK: 5003)
-                .GenerateArray(seed: 0.3187, size: size);
+            var multiplyingCongruentMethodArray =
+                new MultiplyingCongruentMethod(amountM: (int) Math.Pow(2, 14), amountK: 5003)
+                    .GenerateArray(seed: 0.3187, size: size);
 
-            new EqualityTester().ShowTestingDiagram(firstMethodArray, ranges);
+            Console.WriteLine("Метод середины квадрата (тестирование равномерности)");
+
+            new EqualityTester().ShowTestingDiagram(middleSquareMethodArray, ranges);
 
             Console.WriteLine();
+            Console.WriteLine("Мультипликативный конгруэнтный метод (тестирование равномерности)");
 
-            new EqualityTester().ShowTestingDiagram(secondMethodArray, ranges);
+            new EqualityTester().ShowTestingDiagram(multiplyingCongruentMethodArray, ranges);
+
+            Console.WriteLine();
+            Console.WriteLine("Тестирование независимости");
+
+            new IndependenceTester().ShowTestingResult(middleSquareMethodArray, multiplyingCongruentMethodArray);
 
             Console.ReadKey();
         }
