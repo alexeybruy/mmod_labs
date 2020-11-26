@@ -11,13 +11,13 @@ namespace Lab1.Services.IndependenceFormula
         {
             var r = GetCoefficient(valuesX, valuesY);
 
-            Console.WriteLine($"При тестировании независимости коэффициент R = {r}");
+            var stringifiedR = r.ToString("0." + new string('#', 339));
+
+            Console.WriteLine($"При тестировании независимости коэффициент R = {stringifiedR}");
         }
 
         private double GetCoefficient(IEnumerable<double> x, IEnumerable<double> y)
         {
-            var a = Multiply(x, y);
-
             return (M(Multiply(x, y)) - M(x) * M(y)) / Math.Sqrt(D(x) * D(y));
         }
 

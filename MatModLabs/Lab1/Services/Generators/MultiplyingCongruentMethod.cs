@@ -22,7 +22,7 @@ namespace Lab1.Services.Generators
                 return Enumerable.Empty<double>();
             }
 
-            return new[] {seed / AmountM}.Concat(GenerateArray(AmountK * seed % AmountM, size - 1)).ToList();
+            return new[] {seed / AmountM}.Concat(GenerateArray(AmountK * seed % AmountM, size - 1));
         }
     }
 }
