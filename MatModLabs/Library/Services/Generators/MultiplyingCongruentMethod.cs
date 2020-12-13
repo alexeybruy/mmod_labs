@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
-namespace Lab1.Services.Generators
+namespace Library.Services.Generators
 {
     public class MultiplyingCongruentMethod
     {
@@ -17,12 +15,14 @@ namespace Lab1.Services.Generators
 
         public IEnumerable<double> GenerateArray(double seed, double size)
         {
-            if (size == 0)
-            {
-                return Enumerable.Empty<double>();
-            }
+            yield return seed / AmountM;
 
-            return new[] {seed / AmountM}.Concat(GenerateArray(AmountK * seed % AmountM, size - 1)).ToList();
+            for (var i = 0; i < size - 1; i++)
+            {
+                seed = AmountK * seed % AmountM;
+
+                yield return seed / AmountM;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Lab1.Services.ProbabilityMathematics
+namespace Library.Services.ProbabilityMathematics
 {
     public class MathematicalExpectationFormula
     {

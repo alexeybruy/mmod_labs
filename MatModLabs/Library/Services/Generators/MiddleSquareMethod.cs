@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Lab1.Services.Generators
+namespace Library.Services.Generators
 {
     public class MiddleSquareMethod
     {

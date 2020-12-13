@@ -1,8 +1,7 @@
 ﻿using System;
-using Lab1.Services;
-using Lab1.Services.EqualityFormula;
-using Lab1.Services.Generators;
-using Lab1.Services.IndependenceFormula;
+using Library.Services.EqualityFormula;
+using Library.Services.Generators;
+using Library.Services.IndependenceFormula;
 
 namespace Lab1
 {
@@ -10,7 +9,7 @@ namespace Lab1
     {
         static void Main(string[] args)
         {
-            var size = 100;
+            var size = 1000;
             var ranges = 10;
 
             var middleSquareMethodArray = new MiddleSquareMethod().GenerateArray(seed: 3559, size: size);

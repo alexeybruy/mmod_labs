@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lab1.Models;
-using Lab1.Services.ProbabilityMathematics;
+using Library.Services.Models;
+using Library.Services.ProbabilityMathematics;
 
-namespace Lab1.Services.EqualityFormula
+namespace Library.Services.EqualityFormula
 {
     public class EqualityTester
     {
@@ -25,7 +25,7 @@ namespace Lab1.Services.EqualityFormula
             foreach (var item in statistics)
             {
                 Console.WriteLine(
-                    $"Range({Math.Round(item.From, 6)},{Math.Round(item.To, 6)}) - {Math.Round(item.Chance * 100, 2)}%"
+                    $"Range({Math.Round(item.From, 3)};{Math.Round(item.To, 3)}) - {Math.Round(item.Chance * 100, 2)}%"
                         .PadRight(LegendSize) +
                     GetDiagramProgressBar(item.Chance));
             }

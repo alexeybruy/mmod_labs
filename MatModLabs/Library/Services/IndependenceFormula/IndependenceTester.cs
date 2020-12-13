@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Lab1.Services.ProbabilityMathematics;
+using Library.Services.ProbabilityMathematics;
 
-namespace Lab1.Services.IndependenceFormula
+namespace Library.Services.IndependenceFormula
 {
     public class IndependenceTester
     {

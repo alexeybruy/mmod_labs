@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Lab1.Models;
+using Library.Services.Models;
 
-namespace Lab1.Services.EqualityFormula
+namespace Library.Services.EqualityFormula
 {
     public class EqualityStatisticsService
     {
         public IEnumerable<EqualityStatisticsItem> GetChances(IEnumerable<double> values, int rangesCount)
         {
-            var minimum = 0.0;
+            var minimum = values.Min();
 
-            var maximum = 1.0;
+            var maximum = values.Max();
 
             var rangeSize = (maximum - minimum) / rangesCount;
 

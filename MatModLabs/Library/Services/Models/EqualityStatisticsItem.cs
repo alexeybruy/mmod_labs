@@ -1,4 +1,4 @@
-﻿namespace Lab1.Models
+﻿namespace Library.Services.Models
 {
     public class EqualityStatisticsItem
     {
