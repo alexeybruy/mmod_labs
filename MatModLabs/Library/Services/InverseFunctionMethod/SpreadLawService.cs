@@ -13,7 +13,7 @@ namespace Library.Services.InverseFunctionMethod
 
         private double Formula(double value)
         {
-            var result = Math.Acos(value);
+            var result = Math.Asin(value);
 
             return double.IsNaN(result) ? 0 : result;
         }

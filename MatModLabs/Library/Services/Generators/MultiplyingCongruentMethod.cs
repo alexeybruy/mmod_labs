@@ -15,9 +15,7 @@ namespace Library.Services.Generators
 
         public IEnumerable<double> GenerateArray(double seed, double size)
         {
-            yield return seed / AmountM;
-
-            for (var i = 0; i < size - 1; i++)
+            for (var i = 0; i < size; i++)
             {
                 seed = AmountK * seed % AmountM;
 
