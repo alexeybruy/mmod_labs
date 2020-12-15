@@ -8,7 +8,12 @@ namespace Library.Services.InverseFunctionMethod
     {
         public IEnumerable<double> Calculate(IEnumerable<double> values)
         {
-            return values.Select(x => Math.PI - 2 * Math.Acos(2 * x));
+            return values.Select(Formula);
+        }
+
+        public double Formula(double x)
+        {
+            return Math.PI - 2 * Math.Acos(2 * x);
         }
     }
 }
