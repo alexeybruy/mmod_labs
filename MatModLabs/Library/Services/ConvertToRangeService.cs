@@ -7,7 +7,10 @@ namespace Library.Services
     {
         public IEnumerable<double> Convert(IEnumerable<double> values, double min, double max)
         {
-            return values.Select(val => val * (max - min) + min);
+            var valuesMin = values.Min();
+            var valueMax = values.Max();
+
+            return values.Select(val => ((val - valuesMin) / (valueMax - valuesMin)) * (max - min) + min);
         }
     }
 }

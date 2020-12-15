@@ -8,14 +8,7 @@ namespace Library.Services.InverseFunctionMethod
     {
         public IEnumerable<double> Calculate(IEnumerable<double> values)
         {
-            return values.Select(Formula);
-        }
-
-        private double Formula(double value)
-        {
-            var result = Math.Asin(value);
-
-            return double.IsNaN(result) ? 0 : result;
+            return values.Select(x => Math.PI - 2 * Math.Acos(2 * x));
         }
     }
 }
