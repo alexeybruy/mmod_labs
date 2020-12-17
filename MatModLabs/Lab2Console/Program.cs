@@ -11,7 +11,7 @@ namespace Lab2Console
 {
     class Program
     {
-        private static int Size = 17;
+        private static int Size = 20;
 
         private static int Intervals = 10;
 
@@ -32,9 +32,9 @@ namespace Lab2Console
             var generatedX = new MultiplyingCongruentMethod((int) Math.Pow(2, 14), amountK: 5017)
                 .GenerateArray(0.318, Size).ToList();
 
-            var shiftedX = new ConvertToRangeService().Convert(generatedX, -0.5, 0.5);
+            //var shiftedX = new ConvertToRangeService().Convert(generatedX, -0.5, 0.5);
 
-            var calculatedY = new SpreadLawService().Calculate(shiftedX);
+            var calculatedY = new SpreadLawService().Calculate(generatedX);
 
             return calculatedY;
         }
@@ -43,14 +43,14 @@ namespace Lab2Console
         {
             var average = values.Average();
             Console.WriteLine(
-                $"Точечные: мат ожидание - {average}, дисперсия - {(1.0 / values.Count() - 1.0) * values.Sum(val => Math.Pow(val - average, 2))}");
+                $"Точечные: мат ожидание = {average}, дисперсия = {new PointDispersionService().GetDispersion(values)}");
 
 
             var interval1 = new MathematicalExpectationIntervalService().GetInterval(values);
             Console.WriteLine($"Доверительный интервал для мат ожидания: {interval1.Left} < M < {interval1.Right}");
 
             var interval2 = new DispersionIntervalsService().GetInterval(values);
-            Console.WriteLine($"Доверительный интервал для дисперсии: {interval2.Left} < M < {interval2.Right}");
+            Console.WriteLine($"Доверительный интервал для дисперсии: {interval2.Left} < D < {interval2.Right}");
         }
 
         private static void PirsonCriteria(IEnumerable<double> values)
@@ -60,7 +60,11 @@ namespace Lab2Console
 
             var criteria = new XiSquareCriteriaFormula().Calculate(values, Intervals);
 
-            Console.WriteLine($"Критерий пирсона - {criteria}, из таблицы - {xi}");
+            var resolution = criteria < xi
+                ? "Гипотеза верна"
+                : "Гипотеза отклонена";
+
+            Console.WriteLine($"Критерий Пирсона = {criteria}, из таблицы = {xi}. {resolution}");
         }
     }
 }

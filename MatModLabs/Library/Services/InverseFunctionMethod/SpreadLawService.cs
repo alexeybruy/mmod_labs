@@ -13,7 +13,7 @@ namespace Library.Services.InverseFunctionMethod
 
         public double Formula(double x)
         {
-            return Math.PI - 2 * Math.Acos(2 * x);
+            return Math.Asin(2 * x - 1);
         }
     }
 }

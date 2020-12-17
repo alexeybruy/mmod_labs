@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Lab2Console.Services
 {
@@ -15,8 +14,8 @@ namespace Lab2Console.Services
 
             return new Interval
             {
-                Left = values.Count() * s / 18.49,
-                Right = values.Count() * s / 16.31,
+                Left = values.Count() * s / 37.6,
+                Right = values.Count() * s / 8.26,
             };
         }
 

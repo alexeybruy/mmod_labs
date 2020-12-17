@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Library.Services.Generators;
+using System.Windows.Markup;
+using Lab3.Services;
 
 namespace Lab3
 {
@@ -8,21 +10,57 @@ namespace Lab3
     {
         static void Main(string[] args)
         {
-            var size = 20;
+            var matrix = new RetrieveMatrixService().Matrix();
+            
+            Console.WriteLine($"Сумма вероятностей = {matrix.Sum(m => m.Sum())}");
 
-            var generator = new MultiplyingCongruentMethod(amountM: (int)Math.Pow(2, 14), amountK: 5003);
+            Console.WriteLine($"Row    = {JoinArrayToString(GetRowP(matrix))}");
+            Console.WriteLine($"Column = {JoinArrayToString(GetColumnP(matrix))}");
 
-            var matrix = generator.GenerateArray(0.318, size).Select(val => generator.GenerateArray(val, size));
+            Console.WriteLine($"Row    = {GetRowP(matrix).Sum()}");
+            Console.WriteLine($"Column = {GetColumnP(matrix).Sum()}");
 
-            foreach (var i in matrix)
+            Console.WriteLine(SpreadFormula(matrix, 6, 8));
+
+            Console.ReadKey();
+        }
+
+        private static double SpreadFormula(IEnumerable<IEnumerable<double>> matrix, int x, int y)
+        {
+            var sum = 0.0;
+
+            for (int i = 0; i <= x; i++)
             {
-                foreach (var j in i)
+                if (i < matrix.Count())
                 {
-                    Console.Write($"{Math.Round(j,2):0.00}, ");
-                }
+                    var row = matrix.ElementAt(i);
 
-                Console.WriteLine();
+                    for (int j = 0; j <= y; j++)
+                    {
+                        if (j < row.Count())
+                        {
+                            sum += row.ElementAt(j);
+                        }
+                    }
+                }
             }
+
+            return sum;
+        }
+
+        private static IEnumerable<double> GetColumnP(IEnumerable<IEnumerable<double>> matrix)
+        {
+            return matrix.First().Select((_, index) => matrix.Sum(row => row.ElementAt(index)));
+        }
+
+        private static IEnumerable<double> GetRowP(IEnumerable<IEnumerable<double>> matrix)
+        {
+            return matrix.Select(row => row.Sum());
+        }
+
+        private static string JoinArrayToString(IEnumerable<double> values)
+        {
+            return string.Join("; ", values.Select(val => Math.Round(val, 2)));
         }
     }
 }
