@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Lab2Console.Services;
-using Library.Services;
 using Library.Services.EqualityFormula;
 using Library.Services.Generators;
 using Library.Services.InverseFunctionMethod;
@@ -31,8 +30,6 @@ namespace Lab2Console
         {
             var generatedX = new MultiplyingCongruentMethod((int) Math.Pow(2, 14), amountK: 5017)
                 .GenerateArray(0.318, Size).ToList();
-
-            //var shiftedX = new ConvertToRangeService().Convert(generatedX, -0.5, 0.5);
 
             var calculatedY = new SpreadLawService().Calculate(generatedX);
 
