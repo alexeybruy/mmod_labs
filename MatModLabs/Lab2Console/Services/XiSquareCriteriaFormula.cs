@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Library.Services.EqualityFormula;
-using Library.Services.InverseFunctionMethod;
 
 namespace Lab2Console.Services
 {

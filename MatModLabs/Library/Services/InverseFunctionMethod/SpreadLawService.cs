@@ -11,7 +11,7 @@ namespace Library.Services.InverseFunctionMethod
             return values.Select(Formula);
         }
 
-        public double Formula(double x)
+        private double Formula(double x)
         {
             return Math.Asin(2 * x - 1);
         }

@@ -8,7 +8,7 @@ namespace Lab3
 {
     public class Program
     {
-        public const int RandomArraySize = 100000;
+        public const int RandomArraySize = 1000;
 
         static void Main(string[] args)
         {
@@ -87,11 +87,13 @@ namespace Lab3
 
         private static void PrintStatistics(IEnumerable<Pair> pairs, IEnumerable<SpreadRangeForY> rangesForY)
         {
+            var diagramSize = 100;
+
             foreach (var range in rangesForY)
             {
                 var p = (double)pairs.Count(pair => pair.X == range.ItemXId && pair.Y == range.ItemYId) / (double)pairs.Count();
 
-                Console.WriteLine($"[{range.ItemXId}],[{range.ItemYId}] ({Math.Round(p,3),-5}) {new string('=', (int)(100.0 * p))}");
+                Console.WriteLine($"[{range.ItemXId}][{range.ItemYId}] ({Math.Round(p, 3),-5}) |{new string('=', (int)(diagramSize * p)).PadRight(diagramSize, ' ')}|");
             }
         }
     }
