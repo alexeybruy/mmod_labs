@@ -25,17 +25,11 @@ namespace LAB4
         public MainWindow()
         {
             InitializeComponent();
-
-            var init = new RetrievingService().Retrieve();
-
-            PlacesMatrix = init.PlacesMatrix;
-            TransitionsMatrix = init.TransitionsMatrix;
-            Markers = init.Markers;
-            PlacesPositions = init.PlacesPositions.Select(point => new Point(point.X, point.Y)).ToArray();
-            TransitionsPlaces = init.TransitionsPlaces.Select(point => new Point(point.X, point.Y)).ToArray();
-
+            ReloadInit();
             RefreshGraph();
         }
+
+
 
         private void makeStepButton_Click(object sender, RoutedEventArgs e)
         {

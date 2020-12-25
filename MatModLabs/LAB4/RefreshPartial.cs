@@ -93,7 +93,7 @@ namespace LAB4
                     var markerEllipse = new Ellipse
                     {
                         Margin = new Thickness(
-                            placesPosition.X - markerWidth / 2 + ((markersCount + 2) * markerId),
+                            placesPosition.X - markerWidth / 2 + ((markerWidth + 2) * markerId),
                             placesPosition.Y - markerWidth / 2, 0, 0),
                         Width = markerWidth,
                         Height = markerWidth,

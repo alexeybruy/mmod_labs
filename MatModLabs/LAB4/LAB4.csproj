@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ReloadInit.cs" />
     <Compile Include="Services\GraphInitializationModel.cs" />
     <Compile Include="Services\RetrievingService.cs" />
     <Page Include="MainWindow.xaml">
@@ -93,6 +94,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="init2.json" />
     <None Include="init.json" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

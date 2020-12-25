@@ -5,7 +5,7 @@ namespace LAB4.Services
 {
     public class RetrievingService
     {
-        private string initFilePath = "D:\\study\\mmod\\MatModLabs\\LAB4\\init.json";
+        private string initFilePath = "D:\\study\\mmod\\MatModLabs\\LAB4\\init2.json";
 
         public GraphInitializationModel Retrieve()
         {

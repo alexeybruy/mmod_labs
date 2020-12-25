@@ -31,7 +31,7 @@ namespace LAB4
             {
                 for (int placeId = 0; placeId < PlacesMatrix.Length; placeId++)
                 {
-                    if (PlacesMatrix[placeId][transitionId] > 0)
+                    if (PlacesMatrix[placeId][transitionId] > 0 && Markers[placeId] > 0)
                     {
                         Markers[placeId] -= PlacesMatrix[placeId][transitionId];
                     }
