@@ -28,9 +28,7 @@ namespace LAB4
             ReloadInit();
             RefreshGraph();
         }
-
-
-
+        
         private void makeStepButton_Click(object sender, RoutedEventArgs e)
         {
             MakeStep();

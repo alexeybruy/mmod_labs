@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 
 namespace LAB4
@@ -18,7 +20,7 @@ namespace LAB4
                 for (int transitionId = 0; transitionId < TransitionsPlaces.Length; transitionId++)
                 {
                     var transitionsPlace = TransitionsPlaces[transitionId];
-
+                    
                     if (PlacesMatrix[placeId][transitionId] == 1 || TransitionsMatrix[transitionId][placeId] == 1)
                     {
                         var line = new Line
@@ -30,8 +32,14 @@ namespace LAB4
                             StrokeThickness = 1,
                             Stroke = new SolidColorBrush(Colors.Black),
                         };
-
+                        
                         graphGrid.Children.Add(line);
+
+                        var polygon = PlacesMatrix[placeId][transitionId] == 1
+                            ? GenerateArrowPolygon(placesPosition, transitionsPlace)
+                            : GenerateArrowPolygon(transitionsPlace, placesPosition);
+
+                        graphGrid.Children.Add(polygon);
                     }
                 }
             }
@@ -114,6 +122,31 @@ namespace LAB4
 
                 graphGrid.Children.Add(label);
             }
+        }
+
+        private Polygon GenerateArrowPolygon(Point left, Point right)
+        {
+            var size = 10;
+
+            var middlePoint = new Point(
+                left.X + (right.X - left.X) / 2,
+                left.Y + (right.Y - left.Y) / 2);
+            
+            var angle = Math.Atan2(left.Y - right.Y, left.X - right.X) * 180.0 /
+                        Math.PI - 90;
+            
+            var polygon = new Polygon
+            {
+                Points = new PointCollection
+                {
+                    new Point(middlePoint.X, middlePoint.Y),
+                    new Point(middlePoint.X - size * 0.4, middlePoint.Y + size),
+                    new Point(middlePoint.X + size * 0.4, middlePoint.Y + size)
+                },
+                RenderTransform = new RotateTransform(angle, middlePoint.X, middlePoint.Y),
+                Fill = new SolidColorBrush(Colors.Black),
+            };
+            return polygon;
         }
     }
 }
