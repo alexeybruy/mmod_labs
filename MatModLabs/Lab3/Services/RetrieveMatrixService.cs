@@ -6,7 +6,7 @@ namespace Lab3.Services
 {
     public class RetrieveMatrixService
     {
-        private const string FileName = "D:\\study\\mmod\\MatModLabs\\Lab3\\matrix.json";
+        private const string FileName = "D:\\Repo\\mmod\\MatModLabs\\Lab3\\matrix.json";
 
         public IEnumerable<IEnumerable<double>> Matrix()
         {

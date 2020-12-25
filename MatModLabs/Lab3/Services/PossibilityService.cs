@@ -9,12 +9,12 @@ namespace Lab3.Services
     {
         public IEnumerable<double> GetColumnP(IEnumerable<IEnumerable<double>> matrix)
         {
-            return matrix.First().Select((_, index) => matrix.Sum(row => row.ElementAt(index)));
+            return matrix.First().Select((_, index) => matrix.Sum(row => row.ElementAt(index))).ToList();
         }
 
         public  IEnumerable<double> GetRowP(IEnumerable<IEnumerable<double>> matrix)
         {
-            return matrix.Select(row => row.Sum());
+            return matrix.Select(row => row.Sum()).ToList();
         }
     }
 }

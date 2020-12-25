@@ -42,12 +42,11 @@ namespace Lab2Console
             Console.WriteLine(
                 $"Точечные: мат ожидание = {average}, дисперсия = {new PointDispersionService().GetDispersion(values)}");
 
+            var intervalForM = new MathematicalExpectationIntervalService().GetInterval(values);
+            Console.WriteLine($"Доверительный интервал для мат ожидания: {intervalForM.Left} < M < {intervalForM.Right}");
 
-            var interval1 = new MathematicalExpectationIntervalService().GetInterval(values);
-            Console.WriteLine($"Доверительный интервал для мат ожидания: {interval1.Left} < M < {interval1.Right}");
-
-            var interval2 = new DispersionIntervalsService().GetInterval(values);
-            Console.WriteLine($"Доверительный интервал для дисперсии: {interval2.Left} < D < {interval2.Right}");
+            var intervalForD = new DispersionIntervalsService().GetInterval(values);
+            Console.WriteLine($"Доверительный интервал для дисперсии: {intervalForD.Left} < D < {intervalForD.Right}");
         }
 
         private static void PirsonCriteria(IEnumerable<double> values)
