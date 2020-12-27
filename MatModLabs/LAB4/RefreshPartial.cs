@@ -21,7 +21,7 @@ namespace LAB4
                 {
                     var transitionsPlace = TransitionsPlaces[transitionId];
                     
-                    if (PlacesMatrix[placeId][transitionId] == 1 || TransitionsMatrix[transitionId][placeId] == 1)
+                    if (PlacesMatrix[placeId][transitionId] >= 1 || TransitionsMatrix[transitionId][placeId] >= 1)
                     {
                         var line = new Line
                         {

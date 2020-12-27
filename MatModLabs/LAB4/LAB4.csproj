@@ -58,7 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ReloadInit.cs" />
+    <Compile Include="ReloadInitPartial.cs" />
     <Compile Include="Services\GraphInitializationModel.cs" />
     <Compile Include="Services\RetrievingService.cs" />
     <Page Include="MainWindow.xaml">
